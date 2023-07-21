@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Hello</title>
+</head>
+<body>
+<h1>쿠폰 정보 입력</h1>
+
+<form action="process_form" method="post" th:object="${coupon}">
+    <label for="name">화이트 리스트 여부 (예/아니오):</label>
+    <input type="text" id="name" name="name" required><br><br>
+
+    <label for="email">쿠폰 할인율:</label>
+    <input type="text" id="email" name="email" required><br><br>
+
+    <label for="phone">쿠폰 기간:</label>
+    <input type="text" id="phone" name="phone" required><br><br>
+
+    <label for="address">쿠폰 수량:</label>
+    <input type="text" id="address" name="address" required><br><br>
+
+    <input type="submit" value="제출">
+</form>
+</body>
+</html>
