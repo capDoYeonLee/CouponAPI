@@ -15,9 +15,8 @@ import javax.persistence.Id;
 public class Coupon {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)  // 이게 무슨 코드일까?
     private Long id;
-
     private String name;
     private String discountRate;
     private String validPeriod;

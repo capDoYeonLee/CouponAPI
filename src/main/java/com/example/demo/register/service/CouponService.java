@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class CouponService {
 
+
     private final CouponRepository couponRepository;
 
 
@@ -14,7 +15,9 @@ public class CouponService {
         this.couponRepository = couponRepository;
     }
 
+
     public Coupon saveCoupon(Coupon coupon) {
         return couponRepository.save(coupon);
     }
+
 }

@@ -16,7 +16,6 @@ public class SiteUser {
 
     @Column(unique = true) // 중복된 값을 방지하려고
     private String username;
-
     private String password;
 
     @Column(unique = true)
