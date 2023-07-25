@@ -1,6 +1,8 @@
 
 
 spring:
+  main:
+    web-application-type=none:
   datasource:
     url: jdbc:mysql://${MYSQL_HOST:localhost}:${MYSQL_PORT:3306}/${DB_NAME:coupon}?useSSL=false&characterEncoding=UTF-8&serverTimezone=Asia/Seoul&allowPublicKeyRetrieval=true&tinyInt1isBit=false
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -23,3 +25,5 @@ spring:
   sql:
     init:
       mode: always
+server:
+  port: 8090
