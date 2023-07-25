@@ -1,0 +1,61 @@
+#version: "3.8"
+#services:
+#  server:
+#    build: .
+#    restart: always
+#    ports:
+#      - 8080:8080
+#    depends_on:
+#      - mysqldb
+
+#
+#version: '3.1'
+#services:
+#  server:
+#      build: .
+#      restart: always
+#      ports:
+#        - 8080:8080
+#      depends_on:
+#        - mysql
+#  mysql:
+#    container_name: coupon
+#    image: mysql/mysql-server:8.0.27
+#    environment:
+#      - MYSQL_ROOT_PASSWORD=0012
+#      - MYSQL_ROOT_HOST=
+#      - TZ=Asia/Seoul
+#    command: [ "--character-set-server=utf8mb4", "--collation-server=utf8mb4_unicode_ci", "--lower_case_table_names=1", "--max_connections=2048", "--wait_timeout=3600" ]
+#    ports:
+#      - "3306:3306"
+#    volumes:
+#      - ./mysql-init.d:/docker-entrypoint-initdb.d
+
+version: "3"
+services:
+  db:
+    restart: always
+    image: mysql:8.0
+    ports:
+      - 3306:3306
+    environment:
+      - MYSQL_ROOT_PASSWORD=0012
+      - TZ=Asia/Seoul
+      - MYSQL_DATABASE=coupon
+    volumes:
+      - ./db/conf.d:/etc/mysql/conf.d
+      - ./db/data/:/var/lib/mysql/
+
+  app:
+    build: .
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:mysql://db:3306/coupon?allowPublicKeyRetrieval=true&useSSL=false&useUnicode=true&serverTimezone=Asia/Seoul
+      - SPRING_DATASOURCE_USERNAME=root
+      - SPRING_DATASOURCE_PASSWORD=0012
+    container_name: spring-app
+    ports:
+      - 8080:8080
+    depends_on:
+      - db
+    restart: always
+    tty: true
