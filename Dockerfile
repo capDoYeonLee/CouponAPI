@@ -7,7 +7,7 @@ RUN mkdir -p /logs
 
 ENV	PROFILE default
 ENV TZ=Asia/Seoul
-EXPOSE 8080
+EXPOSE 8090
 
 ARG JAVA_OPTS
 
