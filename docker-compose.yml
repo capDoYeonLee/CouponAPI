@@ -72,6 +72,7 @@ services:
       - MYSQL_ROOT_PASSWORD=1234
       - TZ=Asia/Seoul
       - MYSQL_DATABASE=coupon
+      -
     command: ["--character-set-server=utf8mb4", "--collation-server=utf8mb4_unicode_ci", "--lower_case_table_names=1", "--max_connections=2048", "--wait_timeout=3600"]
     volumes:
       - ./data/:/var/lib/mysql
@@ -85,6 +86,7 @@ services:
       - SPRING_DATASOURCE_URL=jdbc:mysql://db:3306/coupon?allowPublicKeyRetrieval=true&useSSL=false&useUnicode=true&serverTimezone=Asia/Seoul
       - SPRING_DATASOURCE_USERNAME=root
       - SPRING_DATASOURCE_PASSWORD=1234
+      - DOCKER_DEFAULT_PLATFORM=linux/amd64
     container_name: spring-app
     ports:
       - "8090:8090"
